@@ -23,6 +23,10 @@
 (setq neo-smart-open t)
 (global-set-key [(control ?\\)] 'neotree-toggle) ;; atom key
 
+;; Python autocomplete-jedi
+(add-hook 'python-mode-hook 'jedi:ac-setup)
+(setq jedi:complete-on-dot t)                 ; optional
+
 ;; Flake8
 (require 'flymake-python-pyflakes)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
@@ -43,7 +47,7 @@
     ("7334f761edfccfa87893211f651220a0899bb206f042b856393b7af22b0413e2" default)))
  '(package-selected-packages
    (quote
-    (ergoemacs-mode ergoemacs-status python-docstring python neotree multishell flymake-python-pyflakes flycheck))))
+    (jedi ergoemacs-mode ergoemacs-status python-docstring python neotree multishell flymake-python-pyflakes flycheck))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
