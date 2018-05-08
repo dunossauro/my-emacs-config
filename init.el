@@ -56,5 +56,8 @@
  )
 
 ;; ergoemacs
-(require 'ergoemacs-status)
-(ergoemacs-status-mode)
+(setq ergoemacs-theme nil)
+(setq ergoemacs-keyboard-layout "us")
+(ergoemacs-mode 1)
+(require 'ergoemacs-mode)
+;; (ergoemacs-status-mode)
