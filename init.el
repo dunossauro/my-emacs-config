@@ -4,10 +4,6 @@
 
 ;; Remove welcome message
 (setq inhibit-startup-message t)
-;; ----------------------------
-;; term macro in new window
-;; Shell in a new vertical windows
-;; TODO
 
 ;; Remove menus
 (menu-bar-mode -1)
@@ -47,7 +43,7 @@
     ("7334f761edfccfa87893211f651220a0899bb206f042b856393b7af22b0413e2" default)))
  '(package-selected-packages
    (quote
-    (jedi ergoemacs-mode ergoemacs-status python-docstring python neotree multishell flymake-python-pyflakes flycheck))))
+    (shell-pop jedi ergoemacs-mode ergoemacs-status python-docstring python neotree multishell flymake-python-pyflakes flycheck))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -61,3 +57,19 @@
 (ergoemacs-mode 1)
 (require 'ergoemacs-mode)
 ;; (ergoemacs-status-mode)
+
+;; shell-pop
+(require 'shell-pop)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(shell-pop-term-shell "/usr/bin/fish")
+ '(shell-pop-universal-key "C-t")
+ '(shell-pop-window-size 30)
+ '(shell-pop-window-position "bottom"))
+
+;; line-numbers
+(require 'linum+)
+(add-hook 'find-file-hook 'linum-mode)
