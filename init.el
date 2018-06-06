@@ -10,6 +10,17 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; cancel auto-save and backups
+(setq auto-save-default nil)
+(setq make-backup-files nil)
+
+
+;; resize easy
+(global-set-key (kbd "M-C-<right>") 'shrink-window-horizontally)
+(global-set-key (kbd "M-C-<left>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-C-<up>") 'enlarge-window)
+(global-set-key (kbd "M-C-<down>") 'shrink-window)
+
 ;; MELPA
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -34,6 +45,7 @@
 
 ;; Theme
 (load-theme 'darkside t)
+(require 'shell-pop)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,16 +57,12 @@
  '(package-selected-packages
    (quote
     (moe-theme smart-mode-line-powerline-theme smart-mode-line powerline shell-pop jedi ergoemacs-mode ergoemacs-status python-docstring python neotree multishell flymake-python-pyflakes flycheck)))
- '(shell-pop-term-shell "/usr/bin/fish")
+ '(shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (shell)))))
+ '(shell-pop-term-shell "/bin/bash")
  '(shell-pop-universal-key "C-t")
  '(shell-pop-window-position "bottom")
  '(shell-pop-window-size 30))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
 
 ;; ergoemacs
 (require 'ergoemacs-mode)
@@ -64,10 +72,6 @@
 ;; (require 'ergoemacs-status)
 ;; (ergoemacs-status-mode)    
 ;; (push 'flyspell-mode ergoemacs-status--suppressed-minor-modes)
-
-;; shell-pop
-(require 'shell-pop)
-
 
 ;; line-numbers
 (global-linum-mode t)
