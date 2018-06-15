@@ -12,6 +12,21 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Move lines
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+(global-set-key (kbd "C-<up>") 'move-line-up)
+(global-set-key (kbd "C-<down>") 'move-line-down)
+
 ;; cancel auto-save and backups
 ;;
 (setq auto-save-default nil)
@@ -88,7 +103,6 @@
 
 ;; shell-pop
 (require 'shell-pop)
-
 (custom-set-variables
  '(shell-pop-shell-type (quote ("ansi-term" "*shell-pop-ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
  '(shell-pop-term-shell "/bin/bash")
